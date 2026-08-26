@@ -32,11 +32,10 @@
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="DaliDev-IA — home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 64 64" width="26" height="26">
-            <path d="M20 17h11.5c8.7 0 14.5 5.9 14.5 15s-5.8 15-14.5 15H20V17Z" fill="none" stroke="currentColor" stroke-width="4.4" stroke-linejoin="round"/>
-            <path d="M28.5 26.5v11" stroke="#D5A35D" stroke-width="4.4" stroke-linecap="round"/>
-            <circle cx="41.5" cy="32" r="2.6" fill="#8EA7FF"/>
-          </svg>
+          <picture>
+            <source srcset="assets/logo-dalidev.webp" type="image/webp" />
+            <img src="assets/logo-dalidev.png" alt="" width="26" height="36" decoding="async" />
+          </picture>
         </span>
         <span class="brand-name">DaliDev<span class="brand-accent">-IA</span></span>
       </a>
@@ -116,20 +115,20 @@
 
         <div class="hero-portrait reveal">
           <figure class="portrait">
-            <div class="portrait-frame">
-              <picture>
-                <source srcset="assets/mohamed-ali-chamsa.webp" type="image/webp" />
-                <img
-                  src="assets/mohamed-ali-chamsa.jpg"
-                  width="900" height="900"
-                  alt="Portrait of Mohamed Ali Chamsa, founder of DaliDev-IA"
-                  fetchpriority="high" decoding="async" />
-              </picture>
-              <figcaption class="portrait-plate">
-                <span class="plate-name">Mohamed Ali Chamsa</span>
-                <span class="plate-role">Founder · DaliDev-IA</span>
-              </figcaption>
-            </div>
+            <span class="portrait-halo" aria-hidden="true"></span>
+            <picture>
+              <source srcset="assets/portrait-cutout.webp" type="image/webp" />
+              <img
+                class="portrait-img"
+                src="assets/portrait-cutout.png"
+                width="1049" height="1000"
+                alt="Portrait of Mohamed Ali Chamsa, founder of DaliDev-IA"
+                fetchpriority="high" decoding="async" />
+            </picture>
+            <figcaption class="portrait-plate">
+              <span class="plate-name">Mohamed Ali Chamsa</span>
+              <span class="plate-role">Founder · DaliDev-IA</span>
+            </figcaption>
           </figure>
         </div>
       </div>

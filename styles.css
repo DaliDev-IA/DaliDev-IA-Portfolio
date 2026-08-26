@@ -199,7 +199,8 @@ ul { list-style: none; padding: 0; }
   letter-spacing: -.01em;
   font-size: 1.06rem;
 }
-.brand-mark { display: inline-flex; color: var(--text); }
+.brand-mark { display: inline-flex; align-items: center; }
+.brand-mark img { height: 34px; width: auto; display: block; }
 .brand-accent { color: var(--accent); }
 
 .nav-list { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); }
@@ -313,54 +314,67 @@ ul { list-style: none; padding: 0; }
 }
 .marker-val { font-size: .92rem; color: var(--muted); line-height: 1.4; }
 
-/* Portrait */
+/* Portrait — integrated cut-out on the hero */
 .hero-portrait { display: flex; justify-content: center; }
+
 .portrait {
   position: relative;
-  width: min(100%, 430px);
+  width: min(100%, 500px);
+  isolation: isolate;
 }
-.portrait::before {
-  /* discreet bronze/blue halo */
-  content: "";
+
+.portrait-halo {
   position: absolute;
-  inset: -14% -6% -6% -6%;
-  background:
-    radial-gradient(60% 55% at 30% 25%, rgba(213, 163, 93, .30), transparent 70%),
-    radial-gradient(50% 50% at 85% 80%, rgba(142, 167, 255, .16), transparent 70%);
-  filter: blur(20px);
+  inset: -6% -8% 5% -8%;
   z-index: 0;
   border-radius: 50%;
+  background:
+    radial-gradient(
+      50% 45% at 51% 33%,
+      rgba(213, 163, 93, .40),
+      rgba(213, 163, 93, .10) 56%,
+      transparent 72%
+    ),
+    radial-gradient(
+      42% 40% at 76% 72%,
+      rgba(142, 167, 255, .15),
+      transparent 70%
+    );
+  filter: blur(30px);
 }
-.portrait-frame {
+
+.portrait-img {
   position: relative;
   z-index: 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--hairline);
-  background: var(--surface);
-  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8);
-}
-.portrait-frame img {
   width: 100%;
-  aspect-ratio: 1 / 1.06;
-  object-fit: cover;
-  object-position: 50% 22%;
-  filter: contrast(1.02) saturate(1.02);
+  height: auto;
+  filter:
+    drop-shadow(0 34px 46px rgba(0, 0, 0, .5))
+    contrast(1.03)
+    saturate(1.02);
 }
+
 .portrait-plate {
   position: absolute;
-  left: 14px; right: 14px; bottom: 14px;
+  left: 3%;
+  bottom: 7%;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 13px 16px;
-  border-radius: 15px;
-  background: rgba(10, 12, 15, .55);
-  border: 1px solid rgba(244, 243, 239, .14);
+  padding: 11px 16px;
+  border-radius: 14px;
+  background: rgba(10, 12, 15, .40);
+  border: 1px solid rgba(244, 243, 239, .12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-.plate-name { font-weight: 650; letter-spacing: -.01em; }
+
+.plate-name {
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
 .plate-role {
   font-family: var(--font-mono);
   font-size: .76rem;
