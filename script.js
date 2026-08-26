@@ -53,6 +53,70 @@
     });
   }
 
+  /* ---- Adaptive hero portrait ----
+     Desktop: align portrait head with the first title line and
+     extend the portrait down to roughly the start of the final title line.
+     This stays correct when translation or viewport width changes wrapping. */
+  var heroCopy = document.querySelector(".hero-copy");
+  var heroTitle = document.querySelector(".hero-title");
+  var heroPortrait = document.querySelector(".hero-portrait");
+  var portrait = heroPortrait ? heroPortrait.querySelector(".portrait") : null;
+  var portraitImg = portrait ? portrait.querySelector(".portrait-img") : null;
+
+  if (heroCopy && heroTitle && heroPortrait && portrait && portraitImg) {
+    var syncHeroPortrait = function () {
+      if (window.innerWidth <= 980) {
+        heroPortrait.style.marginTop = "";
+        portrait.style.width = "";
+        return;
+      }
+
+      var copyRect = heroCopy.getBoundingClientRect();
+      var titleRect = heroTitle.getBoundingClientRect();
+      var titleStyle = window.getComputedStyle(heroTitle);
+      var lineHeight = parseFloat(titleStyle.lineHeight) || 0;
+      var ratio = portraitImg.naturalWidth && portraitImg.naturalHeight
+        ? portraitImg.naturalWidth / portraitImg.naturalHeight
+        : 1.049;
+
+      // Align the very top of the cut-out with the first title line ("Je" / "I").
+      var topOffset = Math.max(0, titleRect.top - copyRect.top);
+
+      // Stop near the beginning of the final title line instead of the title bottom.
+      var targetHeight = Math.max(360, titleRect.height - (lineHeight * 0.55));
+      var targetWidth = targetHeight * ratio;
+
+      heroPortrait.style.marginTop = Math.round(topOffset) + "px";
+      portrait.style.width = Math.round(targetWidth) + "px";
+    };
+
+    var queueHeroPortraitSync = function () {
+      window.requestAnimationFrame(syncHeroPortrait);
+    };
+
+    if (portraitImg.complete) {
+      queueHeroPortraitSync();
+    } else {
+      portraitImg.addEventListener("load", queueHeroPortraitSync, { once: true });
+    }
+
+    window.addEventListener("resize", queueHeroPortraitSync, { passive: true });
+
+    if ("ResizeObserver" in window) {
+      var heroResizeObserver = new ResizeObserver(queueHeroPortraitSync);
+      heroResizeObserver.observe(heroTitle);
+    }
+
+    if ("MutationObserver" in window) {
+      var heroMutationObserver = new MutationObserver(queueHeroPortraitSync);
+      heroMutationObserver.observe(heroTitle, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    }
+  }
+
   /* ---- Scroll reveal ---- */
   var revealItems = document.querySelectorAll(".reveal");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
