@@ -486,7 +486,7 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-mono);
   font-size: .82rem;
   letter-spacing: .02em;
-  color: var(--ink-muted);
+  color: var(--muted);
   padding-left: 14px;
   border-left: 2px solid var(--hairline);
 }
@@ -704,7 +704,7 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-mono);
   font-size: .82rem;
   letter-spacing: .04em;
-  color: var(--ink-muted);
+  color: var(--muted);
 }
 
 /* =========================================================
@@ -730,7 +730,7 @@ ul { list-style: none; padding: 0; }
   margin-top: 6px;
 }
 .footer-meta { text-align: right; color: var(--muted); font-size: .9rem; }
-.footer-built { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-muted); margin-top: 6px; }
+.footer-built { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); margin-top: 6px; }
 
 /* =========================================================
    REVEAL ANIMATION
