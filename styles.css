@@ -315,11 +315,16 @@ ul { list-style: none; padding: 0; }
 .marker-val { font-size: .92rem; color: var(--muted); line-height: 1.4; }
 
 /* Portrait — integrated cut-out on the hero */
-.hero-portrait { display: flex; justify-content: center; margin-top: -64px; }
+.hero-portrait {
+  display: flex;
+  justify-content: center;
+  align-self: start;
+  margin-top: 110px;
+}
 
 .portrait {
   position: relative;
-  width: min(100%, 500px);
+  width: min(116%, 560px);
   isolation: isolate;
 }
 
@@ -765,7 +770,7 @@ ul { list-style: none; padding: 0; }
 
   .hero-grid { grid-template-columns: 1fr; gap: clamp(40px, 8vw, 60px); }
   .hero-copy { order: 1; }
-  .hero-portrait { order: 2; margin-top: 0; }
+  .hero-portrait { order: 2; align-self: auto; margin-top: 0; }
   .portrait { width: min(100%, 380px); }
 
   .about-grid { grid-template-columns: 1fr; gap: 26px; }
