@@ -315,7 +315,7 @@ ul { list-style: none; padding: 0; }
 .marker-val { font-size: .92rem; color: var(--muted); line-height: 1.4; }
 
 /* Portrait — integrated cut-out on the hero */
-.hero-portrait { display: flex; justify-content: center; }
+.hero-portrait { display: flex; justify-content: center; margin-top: -64px; }
 
 .portrait {
   position: relative;
@@ -765,7 +765,7 @@ ul { list-style: none; padding: 0; }
 
   .hero-grid { grid-template-columns: 1fr; gap: clamp(40px, 8vw, 60px); }
   .hero-copy { order: 1; }
-  .hero-portrait { order: 2; }
+  .hero-portrait { order: 2; margin-top: 0; }
   .portrait { width: min(100%, 380px); }
 
   .about-grid { grid-template-columns: 1fr; gap: 26px; }
