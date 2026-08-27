@@ -53,10 +53,13 @@
     });
   }
 
-  /* ---- Hero viewport rebalance experiment ----
-     Desktop only: treat the hero as one composed screen, with a title size
-     derived from viewport height and tighter vertical rhythm. The portrait
-     remains aligned to the translated/wrapped title. */
+  /* ---- Responsive hero composition ----
+     Desktop: one viewport-balanced composition.
+     Mobile/tablet: move the single portrait directly after the title so the
+     hero reads as role -> title -> portrait -> description -> actions -> markers.
+     No duplicated markup is needed, and the original desktop DOM order is
+     restored automatically when the viewport becomes wider again. */
+  var root = document.documentElement;
   var hero = document.querySelector(".hero");
   var heroGrid = document.querySelector(".hero-grid");
   var heroCopy = document.querySelector(".hero-copy");
@@ -70,7 +73,7 @@
   var portraitImg = portrait ? portrait.querySelector(".portrait-img") : null;
 
   if (hero && heroGrid && heroCopy && heroTitle && heroPortrait && portrait && portraitImg) {
-    var resetHeroDesktopStyles = function () {
+    var clearHeroInlineStyles = function () {
       hero.style.minHeight = "";
       hero.style.display = "";
       hero.style.alignItems = "";
@@ -87,14 +90,57 @@
         heroMarkers.style.paddingTop = "";
       }
       heroPortrait.style.marginTop = "";
+      heroPortrait.style.marginBottom = "";
       portrait.style.width = "";
     };
 
-    var syncHeroLayout = function () {
-      if (window.innerWidth <= 980) {
-        resetHeroDesktopStyles();
-        return;
+    var restoreDesktopPortraitOrder = function () {
+      if (heroPortrait.parentNode !== heroGrid) {
+        heroGrid.appendChild(heroPortrait);
       }
+    };
+
+    var placePortraitAfterTitle = function () {
+      if (heroPortrait.parentNode !== heroCopy || heroPortrait.previousElementSibling !== heroTitle) {
+        heroCopy.insertBefore(heroPortrait, heroLede || heroCta || heroMarkers || null);
+      }
+    };
+
+    var syncMobileHero = function () {
+      clearHeroInlineStyles();
+      placePortraitAfterTitle();
+
+      var compactPhone = window.innerWidth <= 760;
+      var titleSize = Math.max(38, Math.min(52, window.innerWidth * 0.112));
+      var portraitWidth = Math.min(compactPhone ? 330 : 380, window.innerWidth - (compactPhone ? 56 : 88));
+
+      // Tighten the general page rhythm on smaller screens while preserving
+      // every desktop spacing value when the viewport widens again.
+      root.style.setProperty("--section-y", compactPhone ? "56px" : "64px");
+
+      hero.style.paddingTop = compactPhone ? "28px" : "36px";
+      hero.style.paddingBottom = compactPhone ? "52px" : "64px";
+
+      heroTitle.style.fontSize = Math.round(titleSize) + "px";
+      heroTitle.style.lineHeight = ".96";
+      if (heroEyebrow) heroEyebrow.style.marginBottom = compactPhone ? "14px" : "16px";
+
+      heroPortrait.style.marginTop = compactPhone ? "22px" : "26px";
+      heroPortrait.style.marginBottom = compactPhone ? "18px" : "22px";
+      portrait.style.width = Math.round(portraitWidth) + "px";
+
+      if (heroLede) heroLede.style.marginTop = "0";
+      if (heroCta) heroCta.style.marginTop = compactPhone ? "20px" : "24px";
+      if (heroMarkers) {
+        heroMarkers.style.marginTop = compactPhone ? "28px" : "32px";
+        heroMarkers.style.paddingTop = compactPhone ? "18px" : "20px";
+      }
+    };
+
+    var syncDesktopHero = function () {
+      clearHeroInlineStyles();
+      restoreDesktopPortraitOrder();
+      root.style.removeProperty("--section-y");
 
       var headerHeight = header ? header.offsetHeight : 68;
       var availableHeight = Math.max(640, window.innerHeight - headerHeight);
@@ -134,6 +180,14 @@
 
       heroPortrait.style.marginTop = Math.round(topOffset) + "px";
       portrait.style.width = Math.round(targetWidth) + "px";
+    };
+
+    var syncHeroLayout = function () {
+      if (window.innerWidth <= 980) {
+        syncMobileHero();
+      } else {
+        syncDesktopHero();
+      }
     };
 
     var queueHeroLayoutSync = function () {
