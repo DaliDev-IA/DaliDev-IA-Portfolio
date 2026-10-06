@@ -225,6 +225,37 @@ ul { list-style: none; padding: 0; }
 .nav-ext { color: var(--text); }
 .nav-ext:hover { color: var(--accent); }
 
+/* Right-side header group (nav + language switch + menu button) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 18px);
+}
+
+/* Language switch FR / EN */
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+}
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 9px;
+  border-radius: 999px;
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+.lang-btn:hover { color: var(--text); }
+.lang-btn.is-active { background: var(--accent-soft); color: var(--accent); }
+
 /* Mobile toggle */
 .nav-toggle {
   display: none;
@@ -315,54 +346,33 @@ ul { list-style: none; padding: 0; }
 .marker-val { font-size: .92rem; color: var(--muted); line-height: 1.4; }
 
 /* Portrait — integrated cut-out on the hero */
-.hero-portrait {
-  display: flex;
-  justify-content: center;
-  align-self: start;
-  margin-top: 70px;
-}
-
+.hero-portrait { display: flex; justify-content: center; }
 .portrait {
   position: relative;
-  width: min(145%, 700px);
+  width: min(100%, 500px);
   isolation: isolate;
 }
-
 .portrait-halo {
+  /* bronze/champagne glow behind the subject, whisper of cool blue */
   position: absolute;
   inset: -6% -8% 5% -8%;
   z-index: 0;
   border-radius: 50%;
   background:
-    radial-gradient(
-      50% 45% at 51% 33%,
-      rgba(213, 163, 93, .40),
-      rgba(213, 163, 93, .10) 56%,
-      transparent 72%
-    ),
-    radial-gradient(
-      42% 40% at 76% 72%,
-      rgba(142, 167, 255, .15),
-      transparent 70%
-    );
+    radial-gradient(50% 45% at 51% 33%, rgba(213, 163, 93, .40), rgba(213, 163, 93, .10) 56%, transparent 72%),
+    radial-gradient(42% 40% at 76% 72%, rgba(142, 167, 255, .15), transparent 70%);
   filter: blur(30px);
 }
-
 .portrait-img {
   position: relative;
   z-index: 1;
   width: 100%;
   height: auto;
-  filter:
-    drop-shadow(0 34px 46px rgba(0, 0, 0, .5))
-    contrast(1.03)
-    saturate(1.02);
+  filter: drop-shadow(0 34px 46px rgba(0, 0, 0, .5)) contrast(1.03) saturate(1.02);
 }
-
 .portrait-plate {
   position: absolute;
-  left: 3%;
-  bottom: 7%;
+  left: 3%; bottom: 7%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -374,12 +384,7 @@ ul { list-style: none; padding: 0; }
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-
-.plate-name {
-  font-weight: 650;
-  letter-spacing: -.01em;
-}
-
+.plate-name { font-weight: 650; letter-spacing: -.01em; }
 .plate-role {
   font-family: var(--font-mono);
   font-size: .76rem;
@@ -505,7 +510,7 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-mono);
   font-size: .82rem;
   letter-spacing: .02em;
-  color: var(--muted);
+  color: var(--ink-muted);
   padding-left: 14px;
   border-left: 2px solid var(--hairline);
 }
@@ -723,7 +728,7 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-mono);
   font-size: .82rem;
   letter-spacing: .04em;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 /* =========================================================
@@ -749,7 +754,7 @@ ul { list-style: none; padding: 0; }
   margin-top: 6px;
 }
 .footer-meta { text-align: right; color: var(--muted); font-size: .9rem; }
-.footer-built { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); margin-top: 6px; }
+.footer-built { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-muted); margin-top: 6px; }
 
 /* =========================================================
    REVEAL ANIMATION
@@ -770,7 +775,7 @@ ul { list-style: none; padding: 0; }
 
   .hero-grid { grid-template-columns: 1fr; gap: clamp(40px, 8vw, 60px); }
   .hero-copy { order: 1; }
-  .hero-portrait { order: 2; align-self: auto; margin-top: 0; }
+  .hero-portrait { order: 2; }
   .portrait { width: min(100%, 380px); }
 
   .about-grid { grid-template-columns: 1fr; gap: 26px; }

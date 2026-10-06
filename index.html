@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>DaliDev-IA — Software, AI &amp; Automation</title>
-  <meta name="description" content="DaliDev-IA — Software &amp; AI Builder, Automation Architect, Entrepreneur and Educator. Building AI-powered products, software and automation systems." />
+  <title>DaliDev-IA — Logiciel, IA &amp; Automatisation</title>
+  <meta name="description" content="DaliDev-IA — Concepteur logiciel &amp; IA, architecte en automatisation, entrepreneur et formateur. Je conçois des produits IA, des logiciels et des systèmes d'automatisation." />
   <meta name="author" content="Mohamed Ali Chamsa" />
   <meta name="theme-color" content="#0B0D10" />
-  <link rel="canonical" href="https://dalidev-ia.netlify.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="DaliDev-IA — Software, AI &amp; Automation" />
-  <meta property="og:description" content="Entrepreneur, Software &amp; AI Builder and Automation Architect. Turning ambitious ideas into working systems." />
-  <meta property="og:url" content="https://dalidev-ia.netlify.app/" />
-  <meta property="og:image" content="https://dalidev-ia.netlify.app/assets/mohamed-ali-chamsa.jpg" />
-  <meta property="og:image:alt" content="Mohamed Ali Chamsa — DaliDev-IA" />
-  <meta property="og:locale" content="en" />
+  <meta property="og:title" content="DaliDev-IA — Logiciel, IA &amp; Automatisation" />
+  <meta property="og:description" content="Entrepreneur, concepteur logiciel &amp; IA et architecte en automatisation. Je transforme des idées ambitieuses en systèmes qui fonctionnent." />
+  <meta property="og:image" content="assets/mohamed-ali-chamsa.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://dalidev-ia.netlify.app/assets/mohamed-ali-chamsa.jpg" />
 
-  <link rel="icon" href="assets/logo-dalidev.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/logo-dalidev.png" />
+  <link rel="icon" href="assets/favicon.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-en="Skip to content">Aller au contenu</a>
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="top">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="DaliDev-IA — home">
+      <a class="brand" href="#top" aria-label="DaliDev-IA — accueil" data-en-aria="DaliDev-IA — home">
         <span class="brand-mark" aria-hidden="true">
           <picture>
             <source srcset="assets/logo-dalidev.webp" type="image/webp" />
@@ -41,36 +38,43 @@
         <span class="brand-name">DaliDev<span class="brand-accent">-IA</span></span>
       </a>
 
-      <nav class="nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#engineering">Engineering</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li>
-            <a class="nav-ext" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener">
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div class="header-right">
+        <nav class="nav" aria-label="Navigation principale" data-en-aria="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="#about" data-en="About">À propos</a></li>
+            <li><a href="#products" data-en="Products">Produits</a></li>
+            <li><a href="#engineering" data-en="Engineering">Ingénierie</a></li>
+            <li><a href="#skills" data-en="Skills">Compétences</a></li>
+            <li><a href="#contact" data-en="Contact">Contact</a></li>
+            <li>
+              <a class="nav-ext" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener">
+                GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+        <div class="lang-switch" role="group" aria-label="Langue / Language">
+          <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile menu -->
     <div class="mobile-nav" id="mobile-nav" hidden>
-      <nav aria-label="Mobile">
+      <nav aria-label="Navigation mobile" data-en-aria="Mobile navigation">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#engineering">Engineering</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-en="About">À propos</a></li>
+          <li><a href="#products" data-en="Products">Produits</a></li>
+          <li><a href="#engineering" data-en="Engineering">Ingénierie</a></li>
+          <li><a href="#skills" data-en="Skills">Compétences</a></li>
+          <li><a href="#contact" data-en="Contact">Contact</a></li>
           <li><a class="nav-ext" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener">GitHub ↗</a></li>
         </ul>
       </nav>
@@ -83,33 +87,30 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Entrepreneur · Software &amp; AI Builder · Automation Architect · Educator</p>
-          <h1 id="hero-title" class="hero-title">I turn ambitious ideas into working systems.</h1>
-          <p class="hero-lede">
-            I build software, AI-powered products and automation systems — combining
-            engineering discipline, product thinking and real-world entrepreneurial experience.
-          </p>
+          <p class="eyebrow" data-en="Entrepreneur · Software &amp; AI Builder · Automation Architect · Educator">Entrepreneur · Concepteur logiciel &amp; IA · Architecte en automatisation · Formateur</p>
+          <h1 id="hero-title" class="hero-title" data-en="I turn ambitious ideas into working systems.">Je transforme des idées ambitieuses en systèmes qui fonctionnent.</h1>
+          <p class="hero-lede" data-en="I build software, AI-powered products and automation systems — combining engineering discipline, product thinking and real-world entrepreneurial experience.">Je conçois des logiciels, des produits propulsés par l'IA et des systèmes d'automatisation — en alliant rigueur d'ingénierie, vision produit et expérience entrepreneuriale concrète.</p>
 
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#products">Explore my products</a>
-            <a class="btn btn-ghost" href="#engineering">View engineering work</a>
+            <a class="btn btn-primary" href="#products" data-en="Explore my products">Découvrir mes produits</a>
+            <a class="btn btn-ghost" href="#engineering" data-en="View engineering work">Voir mes travaux d'ingénierie</a>
             <a class="btn btn-link" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener">
               GitHub <span aria-hidden="true">↗</span>
             </a>
           </div>
 
-          <ul class="hero-markers" aria-label="Focus areas">
+          <ul class="hero-markers" aria-label="Domaines clés" data-en-aria="Focus areas">
             <li>
-              <span class="marker-key">42 School</span>
-              <span class="marker-val">Engineering foundations</span>
+              <span class="marker-key" data-en="42 School">École 42</span>
+              <span class="marker-val" data-en="Engineering foundations">Fondations en ingénierie</span>
             </li>
             <li>
-              <span class="marker-key">AI Products</span>
-              <span class="marker-val">From concept to execution</span>
+              <span class="marker-key" data-en="AI Products">Produits IA</span>
+              <span class="marker-val" data-en="From concept to execution">Du concept à l'exécution</span>
             </li>
             <li>
-              <span class="marker-key">Automation</span>
-              <span class="marker-val">Controlled intelligent workflows</span>
+              <span class="marker-key" data-en="Automation">Automatisation</span>
+              <span class="marker-val" data-en="Controlled intelligent workflows">Workflows intelligents et maîtrisés</span>
             </li>
           </ul>
         </div>
@@ -123,12 +124,13 @@
                 class="portrait-img"
                 src="assets/portrait-cutout.png"
                 width="1049" height="1000"
-                alt="Portrait of Mohamed Ali Chamsa, founder of DaliDev-IA"
+                alt="Portrait de Mohamed Ali Chamsa, fondateur de DaliDev-IA"
+                data-en-alt="Portrait of Mohamed Ali Chamsa, founder of DaliDev-IA"
                 fetchpriority="high" decoding="async" />
             </picture>
             <figcaption class="portrait-plate">
               <span class="plate-name">Mohamed Ali Chamsa</span>
-              <span class="plate-role">Founder · DaliDev-IA</span>
+              <span class="plate-role" data-en="Founder · DaliDev-IA">Fondateur · DaliDev-IA</span>
             </figcaption>
           </figure>
         </div>
@@ -138,29 +140,14 @@
     <!-- ===================== ABOUT ===================== -->
     <section class="about section-paper" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <p class="eyebrow eyebrow-ink"><span class="idx">01</span> / About</p>
+        <p class="eyebrow eyebrow-ink"><span class="idx">01</span> / <span data-en="About">À propos</span></p>
         <div class="about-grid">
-          <h2 id="about-title" class="section-title title-ink">
-            Entrepreneurial experience, rebuilt on engineering foundations.
-          </h2>
+          <h2 id="about-title" class="section-title title-ink" data-en="Entrepreneurial experience, rebuilt on engineering foundations.">Une expérience entrepreneuriale, reconstruite sur des fondations d'ingénierie.</h2>
           <div class="about-body">
-            <p>
-              My path into software engineering comes after years of entrepreneurship,
-              business development and project creation.
-            </p>
-            <p>
-              I chose to return to the foundations, train rigorously at 42 School, and combine
-              that discipline with the experience of building real-world ventures.
-            </p>
-            <p>
-              I do not see engineering as a reset of my previous career. I see it as an
-              expansion of it: the ability to understand a problem, identify value, design a
-              product — and now build the system behind it.
-            </p>
-            <p class="about-close">
-              Today, DaliDev-IA sits at the intersection of software engineering, artificial
-              intelligence, automation, product design and education.
-            </p>
+            <p data-en="My path into software engineering comes after years of entrepreneurship, business development and project creation.">Mon arrivée dans le génie logiciel fait suite à plusieurs années d'entrepreneuriat, de développement commercial et de création de projets.</p>
+            <p data-en="I chose to return to the foundations, train rigorously at 42 School, and combine that discipline with the experience of building real-world ventures.">J'ai choisi de revenir aux fondamentaux, de me former avec rigueur à l'École 42, et d'allier cette discipline à l'expérience de projets concrets menés sur le terrain.</p>
+            <p data-en="I do not see engineering as a reset of my previous career. I see it as an expansion of it: the ability to understand a problem, identify value, design a product — and now build the system behind it.">Je ne vois pas l'ingénierie comme une remise à zéro de mon parcours, mais comme son prolongement&nbsp;: comprendre un problème, identifier la valeur, concevoir un produit — et désormais bâtir le système qui le fait exister.</p>
+            <p class="about-close" data-en="Today, DaliDev-IA sits at the intersection of software engineering, artificial intelligence, automation, product design and education.">Aujourd'hui, DaliDev-IA se situe à l'intersection du génie logiciel, de l'intelligence artificielle, de l'automatisation, du design produit et de l'éducation.</p>
           </div>
         </div>
       </div>
@@ -169,49 +156,44 @@
     <!-- ===================== PRODUCTS ===================== -->
     <section class="products" id="products" aria-labelledby="products-title">
       <div class="wrap">
-        <p class="eyebrow"><span class="idx">02</span> / Products</p>
-        <h2 id="products-title" class="section-title">Products built around useful intelligence.</h2>
-        <p class="section-lede">
-          Public as products — their proprietary logic and source stay private.
-        </p>
+        <p class="eyebrow"><span class="idx">02</span> / <span data-en="Products">Produits</span></p>
+        <h2 id="products-title" class="section-title" data-en="Products built around useful intelligence.">Des produits bâtis autour d'une intelligence utile.</h2>
+        <p class="section-lede" data-en="Public as products — their proprietary logic and source stay private.">Publics en tant que produits — leur logique propriétaire et leur code restent privés.</p>
 
         <!-- Flagship: Coach Master AI -->
         <article class="product product-flagship reveal">
           <div class="product-head">
             <div>
-              <span class="tag tag-flag">Flagship product</span>
+              <span class="tag tag-flag" data-en="Flagship product">Produit phare</span>
               <h3 class="product-name">Coach Master AI</h3>
             </div>
-            <a class="product-repo" href="https://github.com/DaliDev-IA/Coach-Master-AI" target="_blank" rel="noopener" aria-label="Coach Master AI on GitHub">
-              View product <span aria-hidden="true">↗</span>
+            <a class="product-repo" href="https://github.com/DaliDev-IA/Coach-Master-AI" target="_blank" rel="noopener" aria-label="Coach Master AI sur GitHub" data-en-aria="Coach Master AI on GitHub">
+              <span data-en="View product">Voir le produit</span> <span aria-hidden="true">↗</span>
             </a>
           </div>
 
-          <p class="product-slogan">
-            Understand yourself. Clarify what matters. Turn insight into action.
-          </p>
+          <p class="product-slogan" data-en="Understand yourself. Clarify what matters. Turn insight into action.">Se comprendre. Clarifier ce qui compte. Passer de l'analyse à l'action.</p>
           <p class="product-desc">
-            An intelligent personal coaching ecosystem designed to understand the user, identify
-            patterns and inconsistencies, and turn insights into personalized, actionable guidance.
-            <span class="product-principle">The system detects — the AI explains and guides.</span>
+            <span data-en="An intelligent personal coaching ecosystem designed to understand the user, identify patterns and inconsistencies, and turn insights into personalized, actionable guidance.">Un écosystème de coaching personnel intelligent, conçu pour comprendre l'utilisateur, repérer ses schémas et ses incohérences, et transformer ces analyses en conseils personnalisés et actionnables.</span>
+            <span class="product-principle" data-en="The system detects — the AI explains and guides.">Le système détecte — l'IA explique et guide.</span>
           </p>
 
-          <div class="loop" aria-label="Coaching loop">
-            <span>Understand</span><i aria-hidden="true">→</i>
-            <span>Detect</span><i aria-hidden="true">→</i>
-            <span>Prioritize</span><i aria-hidden="true">→</i>
-            <span>Explain</span><i aria-hidden="true">→</i>
-            <span>Act</span><i aria-hidden="true">→</i>
-            <span>Review</span>
+          <div class="loop" aria-label="Boucle de coaching" data-en-aria="Coaching loop">
+            <span data-en="Understand">Comprendre</span><i aria-hidden="true">→</i>
+            <span data-en="Detect">Détecter</span><i aria-hidden="true">→</i>
+            <span data-en="Prioritize">Prioriser</span><i aria-hidden="true">→</i>
+            <span data-en="Explain">Expliquer</span><i aria-hidden="true">→</i>
+            <span data-en="Act">Agir</span><i aria-hidden="true">→</i>
+            <span data-en="Review">Réviser</span>
           </div>
 
-          <ul class="chips" aria-label="Coverage">
-            <li>Organization</li>
-            <li>Self-knowledge</li>
-            <li>Motivation</li>
-            <li>Learning</li>
-            <li>Energy</li>
-            <li>Central AI coaching</li>
+          <ul class="chips" aria-label="Couverture" data-en-aria="Coverage">
+            <li data-en="Organization">Organisation</li>
+            <li data-en="Self-knowledge">Connaissance de soi</li>
+            <li data-en="Motivation">Motivation</li>
+            <li data-en="Learning">Apprentissage</li>
+            <li data-en="Energy">Énergie</li>
+            <li data-en="Central AI coaching">Coaching IA central</li>
           </ul>
         </article>
 
@@ -220,55 +202,48 @@
           <article class="product reveal">
             <div class="product-head">
               <h3 class="product-name">Poker Coach AI</h3>
-              <a class="product-repo" href="https://github.com/DaliDev-IA/Poker-Coach-AI" target="_blank" rel="noopener" aria-label="Poker Coach AI on GitHub">
-                View product <span aria-hidden="true">↗</span>
+              <a class="product-repo" href="https://github.com/DaliDev-IA/Poker-Coach-AI" target="_blank" rel="noopener" aria-label="Poker Coach AI sur GitHub" data-en-aria="Poker Coach AI on GitHub">
+                <span data-en="View product">Voir le produit</span> <span aria-hidden="true">↗</span>
               </a>
             </div>
-            <p class="product-slogan">Turn your poker sessions into structured coaching.</p>
+            <p class="product-slogan" data-en="Turn your poker sessions into structured coaching.">Transformez vos sessions de poker en coaching structuré.</p>
             <p class="product-desc">
-              A post-session MTT poker coaching product that analyzes exported hand histories,
-              detects recurring strategic leaks and turns quantified findings into clear,
-              prioritized coaching.
-              <span class="product-principle">The engine analyzes — the AI explains.</span>
+              <span data-en="A post-session MTT poker coaching product that analyzes exported hand histories, detects recurring strategic leaks and turns quantified findings into clear, prioritized coaching.">Un produit de coaching poker MTT post-session qui analyse les historiques de mains exportés, détecte les fuites stratégiques récurrentes et transforme des constats chiffrés en un coaching clair et priorisé.</span>
+              <span class="product-principle" data-en="The engine analyzes — the AI explains.">Le moteur analyse — l'IA explique.</span>
             </p>
-            <p class="product-note">Post-session analysis only — no real-time assistance, no RTA.</p>
+            <p class="product-note" data-en="Post-session analysis only — no real-time assistance, no RTA.">Analyse post-session uniquement — aucune assistance en temps réel, aucun RTA.</p>
 
-            <div class="loop loop-sm" aria-label="Improvement loop">
-              <span>Play</span><i aria-hidden="true">→</i>
-              <span>Import</span><i aria-hidden="true">→</i>
-              <span>Analyze</span><i aria-hidden="true">→</i>
-              <span>Prioritize</span><i aria-hidden="true">→</i>
-              <span>Study</span><i aria-hidden="true">→</i>
-              <span>Improve</span>
+            <div class="loop loop-sm" aria-label="Boucle de progression" data-en-aria="Improvement loop">
+              <span data-en="Play">Jouer</span><i aria-hidden="true">→</i>
+              <span data-en="Import">Importer</span><i aria-hidden="true">→</i>
+              <span data-en="Analyze">Analyser</span><i aria-hidden="true">→</i>
+              <span data-en="Prioritize">Prioriser</span><i aria-hidden="true">→</i>
+              <span data-en="Study">Étudier</span><i aria-hidden="true">→</i>
+              <span data-en="Improve">Progresser</span>
             </div>
           </article>
 
           <article class="product reveal">
             <div class="product-head">
               <div>
-                <span class="tag">In development</span>
+                <span class="tag" data-en="In development">En développement</span>
                 <h3 class="product-name">Combium AI</h3>
-                <p class="product-subtitle">AI Orchestration Platform</p>
+                <p class="product-subtitle" data-en="AI Orchestration Platform">Plateforme d'orchestration IA</p>
               </div>
-              <a class="product-repo" href="https://github.com/DaliDev-IA/Combium-AI" target="_blank" rel="noopener" aria-label="Combium AI on GitHub">
-                View product <span aria-hidden="true">↗</span>
+              <a class="product-repo" href="https://github.com/DaliDev-IA/Combium-AI" target="_blank" rel="noopener" aria-label="Combium AI sur GitHub" data-en-aria="Combium AI on GitHub">
+                <span data-en="View product">Voir le produit</span> <span aria-hidden="true">↗</span>
               </a>
             </div>
-            <p class="product-slogan">The intelligent layer that makes your projects grow.</p>
-            <p class="product-desc">
-              A reusable multi-project platform designed to coordinate AI models, tools, workflows
-              and human decisions inside one controlled execution layer.
-            </p>
-            <ul class="chips" aria-label="Concepts">
-              <li>Multi-project orchestration</li>
-              <li>Human-in-the-loop</li>
-              <li>Controlled execution</li>
-              <li>Traceability</li>
-              <li>Cost-aware AI</li>
+            <p class="product-slogan" data-en="The intelligent layer that makes your projects grow.">La couche intelligente qui fait grandir vos projets.</p>
+            <p class="product-desc" data-en="A reusable multi-project platform designed to coordinate AI models, tools, workflows and human decisions inside one controlled execution layer.">Une plateforme réutilisable multi-projets, conçue pour coordonner modèles d'IA, outils, workflows et décisions humaines au sein d'une seule couche d'exécution maîtrisée.</p>
+            <ul class="chips" aria-label="Concepts" data-en-aria="Concepts">
+              <li data-en="Multi-project orchestration">Orchestration multi-projets</li>
+              <li data-en="Human-in-the-loop">Validation humaine</li>
+              <li data-en="Controlled execution">Exécution maîtrisée</li>
+              <li data-en="Traceability">Traçabilité</li>
+              <li data-en="Cost-aware AI">IA économe</li>
             </ul>
-            <p class="product-note">
-              Combium AI is the product; n8n is currently one of the technologies used to build it.
-            </p>
+            <p class="product-note" data-en="Combium AI is the product; n8n is currently one of the technologies used to build it.">Combium AI est le produit ; n8n est actuellement l'une des technologies utilisées pour le construire.</p>
           </article>
         </div>
       </div>
@@ -277,130 +252,128 @@
     <!-- ===================== ENGINEERING ===================== -->
     <section class="engineering section-dark" id="engineering" aria-labelledby="eng-title">
       <div class="wrap">
-        <p class="eyebrow"><span class="idx">03</span> / Engineering</p>
-        <h2 id="eng-title" class="section-title">42 School — Engineering Journey</h2>
-        <p class="section-lede">From low-level C to Unix systems, algorithms, concurrency and C++.</p>
+        <p class="eyebrow"><span class="idx">03</span> / <span data-en="Engineering">Ingénierie</span></p>
+        <h2 id="eng-title" class="section-title" data-en="42 School — Engineering Journey">École 42 — Parcours d'ingénierie</h2>
+        <p class="section-lede" data-en="From low-level C to Unix systems, algorithms, concurrency and C++.">Du C bas niveau aux systèmes Unix, aux algorithmes, à la concurrence et au C++.</p>
 
-        <ul class="repo-grid" aria-label="Selected 42 School projects">
+        <ul class="repo-grid" aria-label="Projets 42 sélectionnés" data-en-aria="Selected 42 School projects">
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/minishell" target="_blank" rel="noopener">
-              <span class="repo-meta">Unix systems · C</span>
+              <span class="repo-meta" data-en="Unix systems · C">Systèmes Unix · C</span>
               <span class="repo-name">Minishell <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">Shell parsing, processes, pipelines, redirections and built-ins.</span>
+              <span class="repo-desc" data-en="Shell parsing, processes, pipelines, redirections and built-ins.">Analyse de shell, processus, pipelines, redirections et commandes intégrées.</span>
             </a>
           </li>
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/push_swap" target="_blank" rel="noopener">
-              <span class="repo-meta">Algorithms · C</span>
+              <span class="repo-meta" data-en="Algorithms · C">Algorithmes · C</span>
               <span class="repo-name">Push_swap <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">Constrained sorting algorithms and operation-cost optimization.</span>
+              <span class="repo-desc" data-en="Constrained sorting algorithms and operation-cost optimization.">Algorithmes de tri sous contrainte et optimisation du coût des opérations.</span>
             </a>
           </li>
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/cpp_module09" target="_blank" rel="noopener">
               <span class="repo-meta">STL · C++98</span>
               <span class="repo-name">CPP Module 09 <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">Data processing, RPN evaluation and merge-insertion sorting.</span>
+              <span class="repo-desc" data-en="Data processing, RPN evaluation and merge-insertion sorting.">Traitement de données, évaluation RPN et tri par insertion-fusion.</span>
             </a>
           </li>
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/so_long" target="_blank" rel="noopener">
-              <span class="repo-meta">Graphics · C</span>
+              <span class="repo-meta" data-en="Graphics · C">Graphisme · C</span>
               <span class="repo-name">So_long <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">2D game programming, map validation and MiniLibX graphics.</span>
+              <span class="repo-desc" data-en="2D game programming, map validation and MiniLibX graphics.">Programmation de jeu 2D, validation de carte et graphismes MiniLibX.</span>
             </a>
           </li>
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/philosopher" target="_blank" rel="noopener">
-              <span class="repo-meta">Concurrency · C</span>
+              <span class="repo-meta" data-en="Concurrency · C">Concurrence · C</span>
               <span class="repo-name">Philosophers <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">Threads, synchronization, timing and race-condition management.</span>
+              <span class="repo-desc" data-en="Threads, synchronization, timing and race-condition management.">Threads, synchronisation, gestion du temps et des conditions de course.</span>
             </a>
           </li>
           <li class="repo reveal">
             <a href="https://github.com/DaliDev-IA/pipex" target="_blank" rel="noopener">
-              <span class="repo-meta">Processes · C</span>
+              <span class="repo-meta" data-en="Processes · C">Processus · C</span>
               <span class="repo-name">Pipex <i aria-hidden="true">↗</i></span>
-              <span class="repo-desc">Unix processes, pipes, file descriptors, redirections and execve.</span>
+              <span class="repo-desc" data-en="Unix processes, pipes, file descriptors, redirections and execve.">Processus Unix, pipes, descripteurs de fichiers, redirections et execve.</span>
             </a>
           </li>
         </ul>
 
         <div class="eng-status">
           <div class="status-block">
-            <p class="status-label">Currently building</p>
+            <p class="status-label" data-en="Currently building">En cours de développement</p>
             <ul class="status-list">
               <li>
                 <span class="status-dot status-active" aria-hidden="true"></span>
                 <span class="status-name">ft_irc</span>
                 <span class="status-sep">·</span>
-                <span class="status-desc">Networking / non-blocking IRC server</span>
-                <span class="status-badge">In progress</span>
+                <span class="status-desc" data-en="Networking / non-blocking IRC server">Réseau / serveur IRC non bloquant</span>
+                <span class="status-badge" data-en="In progress">En cours</span>
               </li>
             </ul>
           </div>
           <div class="status-block">
-            <p class="status-label">Next</p>
+            <p class="status-label" data-en="Next">À venir</p>
             <ul class="status-list">
               <li>
                 <span class="status-dot" aria-hidden="true"></span>
                 <span class="status-name">Inception</span>
                 <span class="status-sep">·</span>
-                <span class="status-desc">Docker / infrastructure</span>
+                <span class="status-desc" data-en="Docker / infrastructure">Docker / infrastructure</span>
               </li>
               <li>
                 <span class="status-dot" aria-hidden="true"></span>
                 <span class="status-name">Transcendence</span>
                 <span class="status-sep">·</span>
-                <span class="status-desc">Final full-stack project</span>
+                <span class="status-desc" data-en="Final full-stack project">Projet final full-stack</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <a class="btn btn-ghost btn-wide" href="https://github.com/DaliDev-IA?tab=repositories" target="_blank" rel="noopener">
-          View all repositories <span aria-hidden="true">↗</span>
-        </a>
+        <a class="btn btn-ghost btn-wide" href="https://github.com/DaliDev-IA?tab=repositories" target="_blank" rel="noopener"><span data-en="View all repositories">Voir tous les dépôts</span> <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <!-- ===================== SKILLS ===================== -->
     <section class="skills" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
-        <p class="eyebrow"><span class="idx">04</span> / Skills</p>
-        <h2 id="skills-title" class="section-title">A stack that spans systems and product.</h2>
+        <p class="eyebrow"><span class="idx">04</span> / <span data-en="Skills">Compétences</span></p>
+        <h2 id="skills-title" class="section-title" data-en="A stack that spans systems and product.">Un socle qui va des systèmes au produit.</h2>
 
         <div class="skills-grid">
           <article class="skill-col reveal">
             <span class="skill-idx">01</span>
-            <h3 class="skill-head">Languages &amp; Systems</h3>
+            <h3 class="skill-head" data-en="Languages &amp; Systems">Langages &amp; systèmes</h3>
             <ul>
               <li>C</li><li>C++98</li><li>Unix / Linux</li><li>Bash</li><li>Git</li><li>GitHub</li>
             </ul>
           </article>
           <article class="skill-col reveal">
             <span class="skill-idx">02</span>
-            <h3 class="skill-head">Engineering</h3>
+            <h3 class="skill-head" data-en="Engineering">Ingénierie</h3>
             <ul>
-              <li>Processes</li><li>Pipes</li><li>File descriptors</li><li>Memory management</li>
-              <li>Algorithms</li><li>Data structures</li><li>Threads</li><li>Networking</li>
-              <li>Event-driven systems</li>
+              <li data-en="Processes">Processus</li><li>Pipes</li><li data-en="File descriptors">Descripteurs de fichiers</li><li data-en="Memory management">Gestion mémoire</li>
+              <li data-en="Algorithms">Algorithmes</li><li data-en="Data structures">Structures de données</li><li>Threads</li><li data-en="Networking">Réseau</li>
+              <li data-en="Event-driven systems">Systèmes événementiels</li>
             </ul>
           </article>
           <article class="skill-col reveal">
             <span class="skill-idx">03</span>
-            <h3 class="skill-head">AI &amp; Automation</h3>
+            <h3 class="skill-head" data-en="AI &amp; Automation">IA &amp; automatisation</h3>
             <ul>
-              <li>AI orchestration</li><li>Multi-agent workflows</li><li>Human-in-the-loop validation</li>
-              <li>n8n</li><li>APIs</li><li>AI-assisted product development</li>
+              <li data-en="AI orchestration">Orchestration IA</li><li data-en="Multi-agent workflows">Workflows multi-agents</li><li data-en="Human-in-the-loop validation">Validation humaine (human-in-the-loop)</li>
+              <li>n8n</li><li data-en="APIs">API</li><li data-en="AI-assisted product development">Développement produit assisté par IA</li>
             </ul>
           </article>
           <article class="skill-col reveal">
             <span class="skill-idx">04</span>
-            <h3 class="skill-head">Product Building</h3>
+            <h3 class="skill-head" data-en="Product Building">Conception de produits</h3>
             <ul>
-              <li>Product architecture</li><li>Prototyping</li><li>Workflow design</li>
-              <li>Documentation</li><li>User-focused systems</li><li>Business-to-software translation</li>
+              <li data-en="Product architecture">Architecture produit</li><li data-en="Prototyping">Prototypage</li><li data-en="Workflow design">Conception de workflows</li>
+              <li>Documentation</li><li data-en="User-focused systems">Systèmes centrés utilisateur</li><li data-en="Business-to-software translation">Traduction business → logiciel</li>
             </ul>
           </article>
         </div>
@@ -411,40 +384,31 @@
     <section class="education section-paper" aria-labelledby="edu-title">
       <div class="wrap edu-grid">
         <div>
-          <p class="eyebrow eyebrow-ink"><span class="idx">05</span> / Build · Learn · Share</p>
-          <blockquote id="edu-title" class="edu-quote">
-            Engineering gives me the ability to turn ideas into systems myself.
-            Education lets me make that ability accessible to others.
-          </blockquote>
+          <p class="eyebrow eyebrow-ink"><span class="idx">05</span> / <span data-en="Build · Learn · Share">Construire · Apprendre · Transmettre</span></p>
+          <blockquote id="edu-title" class="edu-quote" data-en="Engineering gives me the ability to turn ideas into systems myself. Education lets me make that ability accessible to others.">L'ingénierie me donne le pouvoir de transformer moi-même les idées en systèmes. La transmission rend cette capacité accessible aux autres.</blockquote>
         </div>
-        <p class="edu-body">
-          Alongside product development, I share practical knowledge around AI, software and
-          automation — with a focus on helping ambitious people understand the technology and
-          build useful systems of their own.
-        </p>
+        <p class="edu-body" data-en="Alongside product development, I share practical knowledge around AI, software and automation — with a focus on helping ambitious people understand the technology and build useful systems of their own.">En parallèle du développement produit, je partage un savoir concret autour de l'IA, du logiciel et de l'automatisation — avec pour objectif d'aider des personnes ambitieuses à comprendre la technologie et à bâtir leurs propres systèmes utiles.</p>
       </div>
     </section>
 
     <!-- ===================== CONTACT ===================== -->
     <section class="contact section-dark" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-inner">
-        <p class="eyebrow"><span class="idx">06</span> / Contact</p>
-        <h2 id="contact-title" class="section-title contact-title">Building something useful and ambitious?</h2>
+        <p class="eyebrow"><span class="idx">06</span> / <span data-en="Contact">Contact</span></p>
+        <h2 id="contact-title" class="section-title contact-title" data-en="Building something useful and ambitious?">Vous construisez quelque chose d'utile et d'ambitieux&nbsp;?</h2>
 
-        <ul class="contact-domains" aria-label="Areas of collaboration">
-          <li>Software products</li>
-          <li>AI</li>
-          <li>Automation</li>
-          <li>Entrepreneurship</li>
-          <li>Training</li>
-          <li>Technical collaboration</li>
+        <ul class="contact-domains" aria-label="Domaines de collaboration" data-en-aria="Areas of collaboration">
+          <li data-en="Software products">Produits logiciels</li>
+          <li data-en="AI">IA</li>
+          <li data-en="Automation">Automatisation</li>
+          <li data-en="Entrepreneurship">Entrepreneuriat</li>
+          <li data-en="Training">Formation</li>
+          <li data-en="Technical collaboration">Collaboration technique</li>
         </ul>
 
         <div class="contact-cta">
-          <a class="btn btn-primary" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener">
-            Connect on GitHub <span aria-hidden="true">↗</span>
-          </a>
-          <p class="contact-soon">Professional email coming soon.</p>
+          <a class="btn btn-primary" href="https://github.com/DaliDev-IA" target="_blank" rel="noopener"><span data-en="Connect on GitHub">Me contacter sur GitHub</span> <span aria-hidden="true">↗</span></a>
+          <p class="contact-soon" data-en="Professional email coming soon.">Adresse e-mail professionnelle bientôt disponible.</p>
         </div>
       </div>
     </section>
@@ -455,11 +419,11 @@
     <div class="wrap footer-inner">
       <div>
         <p class="footer-brand">DaliDev<span class="brand-accent">-IA</span></p>
-        <p class="footer-tag">Software · AI · Automation · Education</p>
+        <p class="footer-tag" data-en="Software · AI · Automation · Education">Logiciel · IA · Automatisation · Éducation</p>
       </div>
       <div class="footer-meta">
         <p>© <span id="year">2026</span> Mohamed Ali Chamsa</p>
-        <p class="footer-built">Built from scratch.</p>
+        <p class="footer-built" data-en="Built from scratch.">Développé de A à Z.</p>
       </div>
     </div>
   </footer>

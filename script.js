@@ -1,6 +1,7 @@
 /* =========================================================
    DaliDev-IA — Portfolio interactions
    Minimal, dependency-free, defensive.
+   Language: French by default, English optional (FR / EN switch).
    ========================================================= */
 (function () {
   "use strict";
@@ -8,6 +9,87 @@
   /* ---- Current year ---- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* =======================================================
+     Internationalisation (FR default, EN override via data-en)
+     ======================================================= */
+  var STORE = "ddia-lang";
+  var currentLang = "fr";
+
+  var metaDesc  = document.querySelector('meta[name="description"]');
+  var ogTitle   = document.querySelector('meta[property="og:title"]');
+  var ogDesc    = document.querySelector('meta[property="og:description"]');
+  var ogLocale  = document.querySelector('meta[property="og:locale"]');
+
+  var META = {
+    fr: {
+      title:    document.title,
+      desc:     metaDesc ? metaDesc.content : "",
+      ogTitle:  ogTitle ? ogTitle.content : "",
+      ogDesc:   ogDesc ? ogDesc.content : "",
+      locale:   "fr_FR",
+      menuOpen: "Ouvrir le menu",
+      menuClose:"Fermer le menu"
+    },
+    en: {
+      title:    "DaliDev-IA — Software, AI & Automation",
+      desc:     "DaliDev-IA — Software & AI Builder, Automation Architect, Entrepreneur and Educator. Building AI-powered products, software and automation systems.",
+      ogTitle:  "DaliDev-IA — Software, AI & Automation",
+      ogDesc:   "Entrepreneur, Software & AI Builder and Automation Architect. Turning ambitious ideas into working systems.",
+      locale:   "en_US",
+      menuOpen: "Open menu",
+      menuClose:"Close menu"
+    }
+  };
+
+  // Snapshot the French originals (authored in the HTML) so we can restore them.
+  var textNodes = document.querySelectorAll("[data-en]");
+  textNodes.forEach(function (n) { n.dataset.fr = n.textContent; });
+
+  var altNodes = document.querySelectorAll("[data-en-alt]");
+  altNodes.forEach(function (n) { n.dataset.frAlt = n.getAttribute("alt") || ""; });
+
+  var ariaNodes = document.querySelectorAll("[data-en-aria]");
+  ariaNodes.forEach(function (n) { n.dataset.frAria = n.getAttribute("aria-label") || ""; });
+
+  var langBtns = document.querySelectorAll(".lang-btn");
+
+  function applyLang(lang) {
+    if (lang !== "en") lang = "fr";
+    var isEn = lang === "en";
+    var m = META[lang];
+
+    textNodes.forEach(function (n) {
+      n.textContent = isEn ? n.getAttribute("data-en") : n.dataset.fr;
+    });
+    altNodes.forEach(function (n) {
+      n.setAttribute("alt", isEn ? n.getAttribute("data-en-alt") : n.dataset.frAlt);
+    });
+    ariaNodes.forEach(function (n) {
+      n.setAttribute("aria-label", isEn ? n.getAttribute("data-en-aria") : n.dataset.frAria);
+    });
+
+    document.documentElement.lang = lang;
+    document.title = m.title;
+    if (metaDesc)  metaDesc.content = m.desc;
+    if (ogTitle)   ogTitle.content = m.ogTitle;
+    if (ogDesc)    ogDesc.content = m.ogDesc;
+    if (ogLocale)  ogLocale.content = m.locale;
+
+    langBtns.forEach(function (b) {
+      var on = b.getAttribute("data-lang") === lang;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+
+    if (toggle) {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-label", open ? m.menuClose : m.menuOpen);
+    }
+
+    currentLang = lang;
+    try { localStorage.setItem(STORE, lang); } catch (e) {}
+  }
 
   /* ---- Header state on scroll ---- */
   var header = document.querySelector(".site-header");
@@ -25,8 +107,9 @@
 
   if (toggle && mobileNav) {
     var setMenu = function (open) {
+      var m = META[currentLang] || META.fr;
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      toggle.setAttribute("aria-label", open ? m.menuClose : m.menuOpen);
       mobileNav.hidden = !open;
     };
 
@@ -34,12 +117,10 @@
       setMenu(toggle.getAttribute("aria-expanded") !== "true");
     });
 
-    // Close after choosing a destination
     mobileNav.addEventListener("click", function (e) {
       if (e.target.closest("a")) setMenu(false);
     });
 
-    // Close on Escape
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
         setMenu(false);
@@ -47,175 +128,27 @@
       }
     });
 
-    // Reset when returning to desktop layout
     window.addEventListener("resize", function () {
       if (window.innerWidth > 980) setMenu(false);
     });
   }
 
-  /* ---- Responsive hero composition ----
-     Desktop: one viewport-balanced composition.
-     Mobile/tablet: move the single portrait directly after the title so the
-     hero reads as role -> title -> portrait -> description -> actions -> markers.
-     No duplicated markup is needed, and the original desktop DOM order is
-     restored automatically when the viewport becomes wider again. */
-  var root = document.documentElement;
-  var hero = document.querySelector(".hero");
-  var heroGrid = document.querySelector(".hero-grid");
-  var heroCopy = document.querySelector(".hero-copy");
-  var heroEyebrow = heroCopy ? heroCopy.querySelector(".eyebrow") : null;
-  var heroTitle = document.querySelector(".hero-title");
-  var heroLede = document.querySelector(".hero-lede");
-  var heroCta = document.querySelector(".hero-cta");
-  var heroMarkers = document.querySelector(".hero-markers");
-  var heroPortrait = document.querySelector(".hero-portrait");
-  var portrait = heroPortrait ? heroPortrait.querySelector(".portrait") : null;
-  var portraitImg = portrait ? portrait.querySelector(".portrait-img") : null;
+  /* ---- Language switch wiring ---- */
+  langBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      applyLang(b.getAttribute("data-lang"));
+    });
+  });
 
-  if (hero && heroGrid && heroCopy && heroTitle && heroPortrait && portrait && portraitImg) {
-    var clearHeroInlineStyles = function () {
-      hero.style.minHeight = "";
-      hero.style.display = "";
-      hero.style.alignItems = "";
-      hero.style.paddingTop = "";
-      hero.style.paddingBottom = "";
-      heroGrid.style.width = "";
-      heroTitle.style.fontSize = "";
-      heroTitle.style.lineHeight = "";
-      if (heroEyebrow) heroEyebrow.style.marginBottom = "";
-      if (heroLede) heroLede.style.marginTop = "";
-      if (heroCta) heroCta.style.marginTop = "";
-      if (heroMarkers) {
-        heroMarkers.style.marginTop = "";
-        heroMarkers.style.paddingTop = "";
-      }
-      heroPortrait.style.marginTop = "";
-      heroPortrait.style.marginBottom = "";
-      portrait.style.width = "";
-    };
-
-    var restoreDesktopPortraitOrder = function () {
-      if (heroPortrait.parentNode !== heroGrid) {
-        heroGrid.appendChild(heroPortrait);
-      }
-    };
-
-    var placePortraitAfterTitle = function () {
-      if (heroPortrait.parentNode !== heroCopy || heroPortrait.previousElementSibling !== heroTitle) {
-        heroCopy.insertBefore(heroPortrait, heroLede || heroCta || heroMarkers || null);
-      }
-    };
-
-    var syncMobileHero = function () {
-      clearHeroInlineStyles();
-      placePortraitAfterTitle();
-
-      var compactPhone = window.innerWidth <= 760;
-      var titleSize = Math.max(38, Math.min(52, window.innerWidth * 0.112));
-      var portraitWidth = Math.min(compactPhone ? 330 : 380, window.innerWidth - (compactPhone ? 56 : 88));
-
-      // Tighten the general page rhythm on smaller screens while preserving
-      // every desktop spacing value when the viewport widens again.
-      root.style.setProperty("--section-y", compactPhone ? "56px" : "64px");
-
-      hero.style.paddingTop = compactPhone ? "28px" : "36px";
-      hero.style.paddingBottom = compactPhone ? "52px" : "64px";
-
-      heroTitle.style.fontSize = Math.round(titleSize) + "px";
-      heroTitle.style.lineHeight = ".96";
-      if (heroEyebrow) heroEyebrow.style.marginBottom = compactPhone ? "14px" : "16px";
-
-      heroPortrait.style.marginTop = compactPhone ? "22px" : "26px";
-      heroPortrait.style.marginBottom = compactPhone ? "18px" : "22px";
-      portrait.style.width = Math.round(portraitWidth) + "px";
-
-      if (heroLede) heroLede.style.marginTop = "0";
-      if (heroCta) heroCta.style.marginTop = compactPhone ? "20px" : "24px";
-      if (heroMarkers) {
-        heroMarkers.style.marginTop = compactPhone ? "28px" : "32px";
-        heroMarkers.style.paddingTop = compactPhone ? "18px" : "20px";
-      }
-    };
-
-    var syncDesktopHero = function () {
-      clearHeroInlineStyles();
-      restoreDesktopPortraitOrder();
-      root.style.removeProperty("--section-y");
-
-      var headerHeight = header ? header.offsetHeight : 68;
-      var availableHeight = Math.max(640, window.innerHeight - headerHeight);
-      var titleSize = Math.max(48, Math.min(78, window.innerHeight * 0.07));
-
-      hero.style.minHeight = availableHeight + "px";
-      hero.style.display = "flex";
-      hero.style.alignItems = "center";
-      hero.style.paddingTop = "28px";
-      hero.style.paddingBottom = "34px";
-      heroGrid.style.width = "100%";
-
-      heroTitle.style.fontSize = Math.round(titleSize) + "px";
-      heroTitle.style.lineHeight = ".96";
-      if (heroEyebrow) heroEyebrow.style.marginBottom = "14px";
-      if (heroLede) heroLede.style.marginTop = "16px";
-      if (heroCta) heroCta.style.marginTop = "20px";
-      if (heroMarkers) {
-        heroMarkers.style.marginTop = "26px";
-        heroMarkers.style.paddingTop = "16px";
-      }
-
-      var copyRect = heroCopy.getBoundingClientRect();
-      var titleRect = heroTitle.getBoundingClientRect();
-      var titleStyle = window.getComputedStyle(heroTitle);
-      var lineHeight = parseFloat(titleStyle.lineHeight) || titleSize * 0.96;
-      var ratio = portraitImg.naturalWidth && portraitImg.naturalHeight
-        ? portraitImg.naturalWidth / portraitImg.naturalHeight
-        : 1.049;
-
-      // Keep the portrait head aligned with the first title line.
-      var topOffset = Math.max(0, titleRect.top - copyRect.top);
-
-      // Let the portrait finish around the beginning of the final title line.
-      var targetHeight = Math.max(320, titleRect.height - (lineHeight * 0.55));
-      var targetWidth = targetHeight * ratio;
-
-      heroPortrait.style.marginTop = Math.round(topOffset) + "px";
-      portrait.style.width = Math.round(targetWidth) + "px";
-    };
-
-    var syncHeroLayout = function () {
-      if (window.innerWidth <= 980) {
-        syncMobileHero();
-      } else {
-        syncDesktopHero();
-      }
-    };
-
-    var queueHeroLayoutSync = function () {
-      window.requestAnimationFrame(syncHeroLayout);
-    };
-
-    if (portraitImg.complete) {
-      queueHeroLayoutSync();
-    } else {
-      portraitImg.addEventListener("load", queueHeroLayoutSync, { once: true });
-    }
-
-    window.addEventListener("resize", queueHeroLayoutSync, { passive: true });
-
-    if ("ResizeObserver" in window) {
-      var heroResizeObserver = new ResizeObserver(queueHeroLayoutSync);
-      heroResizeObserver.observe(heroTitle);
-    }
-
-    if ("MutationObserver" in window) {
-      var heroMutationObserver = new MutationObserver(queueHeroLayoutSync);
-      heroMutationObserver.observe(heroTitle, {
-        childList: true,
-        characterData: true,
-        subtree: true
-      });
-    }
-  }
+  // Resolve initial language: ?lang= > saved choice > French default.
+  var urlLang;
+  try { urlLang = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  var saved;
+  try { saved = localStorage.getItem(STORE); } catch (e) {}
+  var initial = (urlLang === "en" || urlLang === "fr") ? urlLang
+              : (saved === "en" || saved === "fr") ? saved
+              : "fr";
+  applyLang(initial);
 
   /* ---- Scroll reveal ---- */
   var revealItems = document.querySelectorAll(".reveal");

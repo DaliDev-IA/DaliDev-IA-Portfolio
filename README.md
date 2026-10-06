@@ -25,9 +25,12 @@ No React / Vue / Next / Tailwind / Bootstrap. No package manager. No CDN calls.
   script.js           Header state, mobile menu, scroll reveal, year
   README.md
   /assets
-    mohamed-ali-chamsa.jpg    Portrait (JPEG fallback, ~900px)
-    mohamed-ali-chamsa.webp   Portrait (WebP, served first via <picture>)
-    favicon.svg               Brand monogram
+    portrait-cutout.webp      Hero portrait — cut out, transparent bg (served first)
+    portrait-cutout.png       Hero portrait fallback (transparent PNG)
+    mohamed-ali-chamsa.jpg    Original portrait — used only for the social / OG preview
+    logo-dalidev.webp         DaliDev-IA logo, transparent (served first)
+    logo-dalidev.png          DaliDev-IA logo fallback (transparent PNG)
+    favicon.png               Logo on a dark tile (browser tab icon)
 ```
 
 ## Run
@@ -65,16 +68,27 @@ signature, at zero network cost.
 - No email is published yet — the contact CTA points to GitHub, with
   "Professional email coming soon."
 
-## Adding a French version later
+## Bilingual — French by default, English optional
 
-The markup is structured for it. Two low-friction paths:
+The site loads in **French** (native in the HTML, so it works and is indexable with no JS).
+A **FR / EN** switch in the header swaps to English; the choice is remembered
+(`localStorage`) and can be forced with a URL: `?lang=en`.
 
-1. Duplicate `index.html` as `index.fr.html`, translate the visible copy, add a small
-   language switch in the header. Fastest, fully static.
-2. Or keep one file and swap text nodes via a `lang` toggle in `script.js` using
-   `data-en` / `data-fr` attributes.
+How it works, so edits stay simple:
 
-`lang="en"` on `<html>` and `og:locale` should be updated per version.
+- Each translatable element carries its **French text as content** and the English in a
+  `data-en="..."` attribute — both live side by side on the same line.
+- Attributes use `data-en-alt` (image `alt`) and `data-en-aria` (`aria-label`).
+- `script.js` snapshots the French at load, then swaps text/attributes, and updates
+  `<html lang>`, `<title>`, the meta description and Open Graph tags.
+
+To edit a string, change the visible French **and** its `data-en` on the same element.
+Product names, project names and tech terms (C, C++98, n8n…) are intentionally left
+untranslated.
+
+If full per-language URLs are ever needed for SEO (e.g. `/` and `/en/`), the upgrade is to
+split into two static files — but for one shared link that defaults to French, the current
+single-file switch is lighter to host and maintain.
 
 ## Accessibility & performance
 
