@@ -397,8 +397,8 @@ ul { list-style: none; padding: 0; }
    haut — sur desktop la photo grandit pour rester proportionnée au gros titre.
    L'anglais (titre plus court) garde la taille de référence, inchangée. */
 @media (min-width: 981px) {
-  html[lang="fr"] .hero-grid { grid-template-columns: 1.02fr .98fr; }
-  html[lang="fr"] .portrait  { width: min(100%, 600px); }
+  html[lang="fr"] .hero-grid { grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 56px); }
+  html[lang="fr"] .portrait  { width: min(100%, 700px); }
 }
 
 /* =========================================================
